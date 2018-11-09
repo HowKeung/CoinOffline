@@ -25,7 +25,11 @@ package com.jungel.coinoffline.eos.eospocket.blockchain.util;
 
 
 public class StringUtils {
-   public static boolean isEmpty( CharSequence data ) {
-      return ( null == data ) || ( data.length() <= 0);
-   }
+    public static boolean isEmpty(CharSequence data) {
+        return (null == data) || (data.length() <= 0);
+    }
+
+    public static boolean isNotEmpty(CharSequence data) {
+        return (null != data) && (data.length() > 0);
+    }
 }
