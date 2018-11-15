@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class CoinBtcService {
 
-    private String url = "https://coinfaucet.eu/en/btc-testnet/";
+    private String url = "https://live.blockcypher.com/btc-testnet/";
     private String username = "u";
     private String password = "p";
 

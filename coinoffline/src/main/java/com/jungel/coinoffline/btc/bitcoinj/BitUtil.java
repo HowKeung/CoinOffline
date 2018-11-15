@@ -127,10 +127,12 @@ public class BitUtil {
             chain = new BlockChain(params, wallet, blockStore);
             PeerGroup peerGroup = new PeerGroup(params, chain);
             try {
-                Wallet.SendResult result = wallet.sendCoins(peerGroup, targetAddress, Coin.parseCoin(amount));
+                Wallet.SendResult result = wallet.sendCoins(peerGroup, targetAddress, Coin
+                        .parseCoin(amount));
                 // Save the wallet to disk, optional if using auto saving (see below).
                 //wallet.saveToFile(....);
-                // Wait for the transaction to propagate across the P2P network, indicating acceptance.
+                // Wait for the transaction to propagate across the P2P network, indicating
+                // acceptance.
                 try {
                     Transaction transaction = result.broadcastComplete.get();
                 } catch (InterruptedException e) {
@@ -164,7 +166,8 @@ public class BitUtil {
             err = "You got not enough coins";
             return err;
         }
-        SendRequest request = SendRequest.to(Address.fromBase58(params, recipientAddress), Coin.parseCoin(amount));
+        SendRequest request = SendRequest.to(Address.fromBase58(params, recipientAddress), Coin
+                .parseCoin(amount));
         try {
             walletAppKit.wallet().completeTx(request);
             walletAppKit.wallet().commitTx(request.tx);
@@ -234,8 +237,10 @@ public class BitUtil {
 
 
         //通过speed 获取Wallet
-        String seedCode = "yard impulse luxury drive today throw farm pepper survey wreck glass federal";
-        String seedCode2 = "liberty identify erase shuffle dignity armed produce mention actual you top vendor";
+        String seedCode = "yard impulse luxury drive today throw farm pepper survey wreck glass " +
+                "federal";
+        String seedCode2 = "liberty identify erase shuffle dignity armed produce mention actual " +
+                "you top vendor";
         long creationtime = 1409478661L;
         DeterministicSeed seed2;
         try {
@@ -270,14 +275,16 @@ public class BitUtil {
         long creationTimeSeconds = watchingKey.getCreationTimeSeconds();
 
 
-        DeterministicKey key = DeterministicKey.deserializeB58(null, "key data goes here", getParams());
+        DeterministicKey key = DeterministicKey.deserializeB58(null, "key data goes here",
+                getParams());
 
         Wallet wallet = Wallet.fromWatchingKey(getParams(), key);
 
 
         NetworkParameters params = TestNet3Params.get();
 
-        DeterministicSeed seed = new DeterministicSeed(new SecureRandom(), 128, "password", Utils.currentTimeSeconds());
+        DeterministicSeed seed = new DeterministicSeed(new SecureRandom(), 128, "password", Utils
+                .currentTimeSeconds());
         wallet = Wallet.fromSeed(params, seed);
 
         //tobytes
@@ -285,13 +292,15 @@ public class BitUtil {
 
     }
 
-    public static void test() {
+    public static Wallet test() {
         NetworkParameters params = TestNet3Params.get();
-        DeterministicSeed seed = new DeterministicSeed(new SecureRandom(), 128, "123456", Utils.currentTimeSeconds());
+        DeterministicSeed seed = new DeterministicSeed(new SecureRandom(), 128, "123456", Utils
+                .currentTimeSeconds());
         List<String> mnemonicCode = seed.getMnemonicCode();
-        Log.e(TAG, "mnemonicCode" + mnemonicCode);
+        System.out.println("mnemonicCode" + mnemonicCode);
         //       byte[] bytes = MnemonicCode.toSeed(mnemonicCode, "123456");
         Wallet wallet = Wallet.fromSeed(params, seed);
+        return wallet;
     }
 
     public static void test2(ECKey ceKey) {
@@ -314,7 +323,8 @@ public class BitUtil {
         KeyChainGroup kcg;
         DeterministicSeed deterministicSeed = null;
         try {
-            deterministicSeed = new DeterministicSeed(seedCode, null, password, Utils.currentTimeSeconds());
+            deterministicSeed = new DeterministicSeed(seedCode, null, password, Utils
+                    .currentTimeSeconds());
         } catch (UnreadableWalletException e) {
             e.printStackTrace();
         }
@@ -334,7 +344,8 @@ public class BitUtil {
 
     //通过助记词
     public static WalletAppKit getWalletKit(Context context, String seedcode) {
-        WalletAppKit walletAppKit = new WalletAppKit(getParams(), context.getCacheDir(), Constant.WALLET_NAME) {
+        WalletAppKit walletAppKit = new WalletAppKit(getParams(), context.getCacheDir(), Constant
+                .WALLET_NAME) {
             @Override
             protected void onSetupCompleted() {
                 if (wallet().getImportedKeys().size() < 1) wallet().importKey(new ECKey());
@@ -350,8 +361,10 @@ public class BitUtil {
                 String s1 = wallet().currentReceiveAddress().toBase58();
 
                 // String s2 = wallet().currentChangeAddress().toBase58();
-                String privateKeyAsWiF = wallet().currentReceiveKey().getPrivateKeyAsWiF(getParams());
-                Log.e("TAG", "currentReceiveAddress=" + s1 + "===privateKeyAsWiF=" + privateKeyAsWiF);
+                String privateKeyAsWiF = wallet().currentReceiveKey().getPrivateKeyAsWiF
+                        (getParams());
+                Log.e("TAG", "currentReceiveAddress=" + s1 + "===privateKeyAsWiF=" +
+                        privateKeyAsWiF);
                 //Log.e("freshReceiveAddress="+s+"==="+"currentReceiveAddress="+s1);
             }
         };
@@ -366,7 +379,8 @@ public class BitUtil {
         }
         if (!StringUtils.isEmpty(seedcode)) {
             try {
-                DeterministicSeed seed = new DeterministicSeed(seedcode, null, passphrase, Utils.currentTimeSeconds());
+                DeterministicSeed seed = new DeterministicSeed(seedcode, null, passphrase, Utils
+                        .currentTimeSeconds());
                 walletAppKit.restoreWalletFromSeed(seed);
             } catch (UnreadableWalletException e) {
                 e.printStackTrace();
@@ -390,7 +404,7 @@ public class BitUtil {
             protected void progress(double pct, int blocksSoFar, Date date) {
                 super.progress(pct, blocksSoFar, date);
                 int percentage = (int) pct;
-                Log.e("TAG",percentage + "percentage");
+                Log.e("TAG", percentage + "percentage");
             }
 
             @Override
@@ -399,8 +413,8 @@ public class BitUtil {
                 String myAddress = walletAppKit.wallet().currentReceiveAddress().toBase58();
                 String s = walletAppKit.wallet().getBalance().toFriendlyString();
                 BtcData btcData = new BtcData(myAddress, s);
-//                RxBus.getInstance().send(new MessageModel(BTC_DATA, btcData));
-                Log.e("TAG",myAddress + "==" + s);
+                //                RxBus.getInstance().send(new MessageModel(BTC_DATA, btcData));
+                Log.e("TAG", myAddress + "==" + s);
 
             }
         });
@@ -413,12 +427,13 @@ public class BitUtil {
             if (tx.getPurpose() == Transaction.Purpose.UNKNOWN) {
                 s1 = newBalance.minus(prevBalance).toFriendlyString();
             }
-            Log.e("TAG",s + "===" + s1);
+            Log.e("TAG", s + "===" + s1);
         });
         wallet.addCoinsSentEventListener((wallet12, tx, prevBalance, newBalance) -> {
             String s = wallet.getBalance().toFriendlyString();
-            String s1 = "Sent " + prevBalance.minus(newBalance).minus(tx.getFee()).toFriendlyString();
-            Log.e("TAG",s + "===" + s1);
+            String s1 = "Sent " + prevBalance.minus(newBalance).minus(tx.getFee())
+                    .toFriendlyString();
+            Log.e("TAG", s + "===" + s1);
         });
 
 
@@ -450,11 +465,14 @@ public class BitUtil {
     }
 
     public static void test2() {
-        DeterministicKey deterministicKey = AppContext.walletAppKit.wallet().getWatchingKey().dropPrivateBytes();
-        deterministicKey = HDKeyDerivation.createMasterPubKeyFromBytes(deterministicKey.getPubKey(), deterministicKey
+        DeterministicKey deterministicKey = AppContext.walletAppKit.wallet().getWatchingKey()
+                .dropPrivateBytes();
+        deterministicKey = HDKeyDerivation.createMasterPubKeyFromBytes(deterministicKey.getPubKey
+                (), deterministicKey
                 .getChainCode());
         String xPublicKey = deterministicKey.serializePubB58(getParams());
-        String privateKey = AppContext.walletAppKit.wallet().getKeyByPath(DeterministicKeyChain.ACCOUNT_ZERO_PATH)
+        String privateKey = AppContext.walletAppKit.wallet().getKeyByPath(DeterministicKeyChain
+                .ACCOUNT_ZERO_PATH)
                 .getPrivateKeyAsWiF(getParams());
         Log.e("key", xPublicKey.toString());
         Log.e("privatekey", privateKey.toString());
@@ -491,8 +509,36 @@ public class BitUtil {
             String hex = android.util.Base64.encodeToString(res, 16);
             Log.e("sigendTransiction", hex.toString());
             Log.e("decrypttx", "" + Hex.decode(sig.encodeToDER()));
-        } catch (Exception e) {   //signingkey = ecdsa.from_string(privateKey.decode('hex'), curve=ecdsa.SECP256k1)
+        } catch (Exception e) {   //signingkey = ecdsa.from_string(privateKey.decode('hex'),
+            // curve=ecdsa.SECP256k1)
             Log.e("signing exception", e.getMessage().toString());
         }
+    }
+
+    public static void main(String[] args) {
+
+        TestNet3Params params = TestNet3Params.get();
+        //        ECKey key = new ECKey();
+        //        System.out.format("私钥 => %s\n", key.getPrivateKeyAsHex());
+        //        System.out.format("公钥 => %s\n", key.getPublicKeyAsHex());
+        //        System.out.format("地址 => %s\n", key.toAddress(params));
+
+        List<ECKey> list = new ArrayList<>();
+        ECKey ecKey = getECKeyFromPriKey
+                ("53451c9af1debe2fcc2348310aa994e050692d99e4428bccc4c78b744615a760");
+        System.out.format("私钥 => %s\n", ecKey.getPrivateKeyAsHex());
+        System.out.format("私钥 => %s\n", ecKey.getPrivKey().toString(16));
+        System.out.format("私钥 => %s\n", ecKey.getPrivateKeyAsHex().equalsIgnoreCase
+                ("53451c9af1debe2fcc2348310aa994e050692d99e4428bccc4c78b744615a760"));
+        System.out.format("公钥 => %s\n", ecKey.getPublicKeyAsHex());
+        System.out.format("公钥 => %s\n", ecKey.getPublicKeyAsHex().equalsIgnoreCase
+                ("03425f7fbf2fe0333e108c49b305a64bb4ea721dec9a1f7d6a668cde31a27ed8ab"));
+        System.out.format("地址 => %s\n", ecKey.toAddress(params));
+        System.out.format("地址 => %s\n", ecKey.toAddress(params).toString().equalsIgnoreCase
+                ("mk7C8qgM2bUCKJ4ABEpfdqTd4jDrRdDKX9"));
+        list.add(ecKey);
+        Wallet wallet = Wallet.fromKeys(params, list);
+        Coin coin = wallet.getBalance();
+        System.out.format("余额 => %s\n", coin.value);
     }
 }
