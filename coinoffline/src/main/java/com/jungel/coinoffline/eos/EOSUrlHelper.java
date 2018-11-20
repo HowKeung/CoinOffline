@@ -1,6 +1,6 @@
 package com.jungel.coinoffline.eos;
 
-public class HDUrlHelper {
+public class EOSUrlHelper {
 
     public static final String TRANSFER = "transfer";
     public static final String NEW_ACCOUNT = "newaccount";

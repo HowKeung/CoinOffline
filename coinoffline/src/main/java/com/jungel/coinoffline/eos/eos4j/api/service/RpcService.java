@@ -1,6 +1,6 @@
 package com.jungel.coinoffline.eos.eos4j.api.service;
 
-import com.jungel.coinoffline.eos.HDUrlHelper;
+import com.jungel.coinoffline.eos.EOSUrlHelper;
 import com.jungel.coinoffline.eos.eos4j.api.vo.Block;
 import com.jungel.coinoffline.eos.eos4j.api.vo.ChainInfo;
 import com.jungel.coinoffline.eos.eos4j.api.vo.HistoryAction;
@@ -23,28 +23,28 @@ import retrofit2.http.POST;
  */
 public interface RpcService {
 
-    @GET(HDUrlHelper.HD_URL_GET_INFO)
+    @GET(EOSUrlHelper.HD_URL_GET_INFO)
     Call<ChainInfo> getChainInfo();
 
-    @POST(HDUrlHelper.HD_URL_GET_BLOCK)
+    @POST(EOSUrlHelper.HD_URL_GET_BLOCK)
     Call<Block> getBlock(@Body Map<String, String> requestFields);
 
-    @POST(HDUrlHelper.HD_URL_GET_ACCOUNT)
+    @POST(EOSUrlHelper.HD_URL_GET_ACCOUNT)
     Call<Account> getAccount(@Body Map<String, String> requestFields);
 
-    @POST(HDUrlHelper.HD_URL_PUSH_TRANSACTION)
+    @POST(EOSUrlHelper.HD_URL_PUSH_TRANSACTION)
     Call<Transaction> pushTransaction(@Body TxRequest request);
 
     @POST("/v1/chain/get_table_rows")
     Call<TableRows> getTableRows(@Body TableRowsReq request);
 
-    @POST(HDUrlHelper.HD_URL_TRADE_HISTORY)
+    @POST(EOSUrlHelper.HD_URL_TRADE_HISTORY)
     Call<HistoryAction> getHistoryAction(@Body Map<String, String> requestFields);
 
-    @POST(HDUrlHelper.HD_URL_QUERY_ACCOUNT)
+    @POST(EOSUrlHelper.HD_URL_QUERY_ACCOUNT)
     Call<KeyAccounts> getKeyAccounts(@Body Map<String, String> requestFields);
 
-    @POST(HDUrlHelper.HD_URL_GET_BALANCE)
+    @POST(EOSUrlHelper.HD_URL_GET_BALANCE)
     Call<String[]> getBalance(@Body Map<String, String> requestFields);
 
 }
