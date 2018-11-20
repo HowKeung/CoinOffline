@@ -21,7 +21,7 @@ public class ETHUserInfo {
     }
 
     public static boolean hasAddress() {
-        String mnemonic = (String) SpfHelper.getParam(CoinOffline.getContext(), ETHUrlHelper
+        String mnemonic = (String) SpfHelper.getParam(CoinOffline.getInstance().getContext(), ETHUrlHelper
                 .KEY_WALLET_MNEMONIC, "");
         return TextUtils.isEmpty(mnemonic);
     }

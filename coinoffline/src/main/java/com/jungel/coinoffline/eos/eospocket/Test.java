@@ -17,7 +17,7 @@ public class Test {
         hashMap.put("offset", String.valueOf(20));
         hashMap.put("account_name", "kew123451kew");
         HttpUtils.postRequest("https://api.helloeos.com.cn//v1/history/get_actions",
-                CoinOffline.getContext(), hashMap,
+                CoinOffline.getInstance().getContext(), hashMap,
                 new JsonCallback<ResponseBean<String>>() {
                     @Override
                     public void onSuccess(Response<ResponseBean<String>> response) {

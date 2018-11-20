@@ -177,7 +177,7 @@ public class AndroidMnemonicUtils {
     private static List<String> readAllLines(String fileName) {
         List<String> txtList = new ArrayList<>();
         try {
-            InputStream instream = CoinOffline.getContext().getAssets().open(fileName + ".txt");
+            InputStream instream = CoinOffline.getInstance().getContext().getAssets().open(fileName + ".txt");
             if (instream != null) {
                 InputStreamReader inputreader = new InputStreamReader(instream);
                 BufferedReader buffreader = new BufferedReader(inputreader);
