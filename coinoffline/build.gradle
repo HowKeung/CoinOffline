@@ -57,4 +57,5 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.2.51'
     implementation 'com.alibaba:fastjson:1.1.70.android'
     implementation 'org.bitcoinj:bitcoinj-core:0.14.7' //btc
+    implementation 'com.github.consenlabs:token-core-android:v0.1'// imtoken
 }
