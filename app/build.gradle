@@ -20,6 +20,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        exclude 'lib/x86_64/darwin/libscrypt.dylib'
+    }
 }
 
 dependencies {
@@ -31,4 +34,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation project(':coinoffline')
+    implementation 'com.github.allByWave:CoinOffline:1.1.3'
 }
