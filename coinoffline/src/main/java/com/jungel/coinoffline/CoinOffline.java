@@ -83,6 +83,10 @@ public class CoinOffline implements KeystoreStorage {
         mIsShowPin = showPin;
     }
 
+    public synchronized String getPinCode() {
+        return Utils.getSpUtils().getString(KEY_PIN_CODE);
+    }
+
     public synchronized boolean hasCreateAccount() {
         if (Identity.getCurrentIdentity() == null) {
             return false;
