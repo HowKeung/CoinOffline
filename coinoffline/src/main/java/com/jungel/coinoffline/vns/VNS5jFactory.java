@@ -3,11 +3,10 @@ package com.jungel.coinoffline.vns;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.Web3jFactory;
 import org.web3j.protocol.Web3jService;
-import org.web3j.protocol.core.JsonRpc2_0Web3j;
 
 import java.util.concurrent.ScheduledExecutorService;
 
-public class VNS4jFactory extends Web3jFactory {
+public class VNS5jFactory extends Web3jFactory {
 
     /**
      * Construct a new Web3j instance.
@@ -16,7 +15,7 @@ public class VNS4jFactory extends Web3jFactory {
      * @return new Web3j instance
      */
     public static Web3j build(Web3jService web3jService) {
-        return new JsonRpc2_0VNS4j(web3jService);
+        return new JsonRpc2_0VNS5j(web3jService);
     }
 
     /**
@@ -32,6 +31,6 @@ public class VNS4jFactory extends Web3jFactory {
     public static Web3j build(
             Web3jService web3jService, long pollingInterval,
             ScheduledExecutorService scheduledExecutorService) {
-        return new JsonRpc2_0VNS4j(web3jService, pollingInterval, scheduledExecutorService);
+        return new JsonRpc2_0VNS5j(web3jService, pollingInterval, scheduledExecutorService);
     }
 }

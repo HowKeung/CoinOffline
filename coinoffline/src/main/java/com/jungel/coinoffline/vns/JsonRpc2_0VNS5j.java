@@ -68,7 +68,7 @@ import java.util.concurrent.ScheduledExecutorService;
 
 import rx.Observable;
 
-public class JsonRpc2_0VNS4j implements Web3j {
+public class JsonRpc2_0VNS5j implements Web3j {
 
     public static final int DEFAULT_BLOCK_TIME = 15 * 1000;
 
@@ -76,11 +76,11 @@ public class JsonRpc2_0VNS4j implements Web3j {
     private final JsonRpc2_0Rx web3jRx;
     private final long blockTime;
 
-    public JsonRpc2_0VNS4j(Web3jService web3jService) {
+    public JsonRpc2_0VNS5j(Web3jService web3jService) {
         this(web3jService, DEFAULT_BLOCK_TIME, Async.defaultExecutorService());
     }
 
-    public JsonRpc2_0VNS4j(
+    public JsonRpc2_0VNS5j(
             Web3jService web3jService, long pollingInterval,
             ScheduledExecutorService scheduledExecutorService) {
         this.web3jService = web3jService;
