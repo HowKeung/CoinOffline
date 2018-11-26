@@ -21,9 +21,8 @@ public class EOSUrlHelper {
     public static final String CREATOR_KEY = "5JCvpCqyVwvjDCeDhS2MNAkBZgEbh7GuRkiH1aKt1yxq5ibrc4Y";
 
 
-    //    public static final String HD_MAIN_URL = "https://mainnet-eos.token.im";
-    public static final String HD_MAIN_URL = "http://jungle.cryptolions.io:18888";
-    public static final String HD_WALLET_URL = "http://jungle.cryptolions.io:8899";
+    public static final String HD_MAIN_URL = "https://mainnet-eos.token.im";
+    public static final String HD_TEST_URL = "http://jungle.cryptolions.io:18888";
 
     /**
      * 序列化新建账号的json
