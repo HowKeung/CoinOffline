@@ -14,7 +14,7 @@ public class ETHUrlHelper {
     public static final String HD_TEST_HISTORY_URL = "https://api-ropsten.etherscan.io";
 
     public static final String HD_URL_ETH_HISTORY =
-            "/api?module=account&action=txlist&sort=desc&apikey=" + ETH_API_KEY;
+            "/api?module=account&action=txlist&startblock=0&endblock=99999999&sort=desc&apikey=" + ETH_API_KEY;
 
     public static final String HD_URL_ERC_HISTORY =
             "/api?module=account&action=tokentx&sort=desc&apikey=" + ETH_API_KEY;
