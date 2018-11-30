@@ -2,7 +2,7 @@ package com.jungel.coinoffline.eth.bean;
 
 import java.util.List;
 
-public class ERCTransaction {
+public class ETHTransaction {
 
     private String status;
     private String message;
