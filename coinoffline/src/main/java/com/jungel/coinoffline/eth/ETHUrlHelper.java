@@ -16,8 +16,8 @@ public class ETHUrlHelper {
 
     public static final String HD_ETH_HISTORY_URL =
             "/api?module=account&action=txlist&startblock=0&endblock=99999999&sort=desc&apikey="
-                    + ETH_API_KEY;
+                   ;
 
     public static final String HD_ERC_HISTORY_URL =
-            "/api?module=account&action=tokentx&sort=desc&apikey=" + ETH_API_KEY;
+            "/api?module=account&action=tokentx&sort=desc&apikey=";
 }
