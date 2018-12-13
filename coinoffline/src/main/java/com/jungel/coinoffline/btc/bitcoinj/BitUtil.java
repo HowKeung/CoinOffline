@@ -33,6 +33,7 @@ import org.bitcoinj.store.BlockStoreException;
 import org.bitcoinj.store.SPVBlockStore;
 import org.bitcoinj.wallet.DeterministicKeyChain;
 import org.bitcoinj.wallet.DeterministicSeed;
+import org.bitcoinj.wallet.KeyChain;
 import org.bitcoinj.wallet.KeyChainGroup;
 import org.bitcoinj.wallet.SendRequest;
 import org.bitcoinj.wallet.UnreadableWalletException;
@@ -540,5 +541,12 @@ public class BitUtil {
         Wallet wallet = Wallet.fromKeys(params, list);
         Coin coin = wallet.getBalance();
         System.out.format("余额 => %s\n", coin.value);
+        System.out.format("地址 currentReceiveAddress=> %s\n", wallet.currentReceiveAddress().toBase58());
+        System.out.format("地址 currentChangeAddress=> %s\n", wallet.currentChangeAddress().toBase58());
+        System.out.format("地址 freshReceiveAddress=> %s\n", wallet.freshReceiveAddress().toBase58());
+        System.out.println("地址 RECEIVE_FUNDS : " + wallet.currentAddress(KeyChain.KeyPurpose.RECEIVE_FUNDS));
+        System.out.println("地址 CHANGE : " + wallet.currentAddress(KeyChain.KeyPurpose.CHANGE));
+        System.out.println("地址 REFUND : " + wallet.currentAddress(KeyChain.KeyPurpose.REFUND));
+        System.out.println("地址 AUTHENTICATION : " + wallet.currentAddress(KeyChain.KeyPurpose.AUTHENTICATION));
     }
 }
