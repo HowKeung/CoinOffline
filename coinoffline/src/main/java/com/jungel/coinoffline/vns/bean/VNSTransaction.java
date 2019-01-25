@@ -1,5 +1,8 @@
 package com.jungel.coinoffline.vns.bean;
 
+import com.jungel.coinoffline.eth.NumberMathUtil;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 public class VNSTransaction {
@@ -52,10 +55,10 @@ public class VNSTransaction {
         private String creates;
         private String fromAddress;
         private String toAddress;
-        private long txValue;
+        private String txValue;
         private String txValueStr;
-        private long gas;
-        private long gasPrice;
+        private String gas;
+        private String gasPrice;
         private String gasPriceStr;
         private String input;
         private String nonce;
@@ -74,7 +77,7 @@ public class VNSTransaction {
         private int blockTime;
         private String blockTimeStr;
         private String tokenEnName;
-        private int gasUsed;
+        private String gasUsed;
         private String status;
         private String userAddress;
         private int findType;
@@ -176,11 +179,11 @@ public class VNSTransaction {
             return toAddress;
         }
 
-        public void setTxValue(long txValue) {
+        public void setTxValue(String txValue) {
             this.txValue = txValue;
         }
 
-        public long getTxValue() {
+        public String getTxValue() {
             return txValue;
         }
 
@@ -192,19 +195,19 @@ public class VNSTransaction {
             return txValueStr;
         }
 
-        public void setGas(long gas) {
+        public void setGas(String gas) {
             this.gas = gas;
         }
 
-        public long getGas() {
+        public String getGas() {
             return gas;
         }
 
-        public void setGasPrice(long gasPrice) {
+        public void setGasPrice(String gasPrice) {
             this.gasPrice = gasPrice;
         }
 
-        public long getGasPrice() {
+        public String getGasPrice() {
             return gasPrice;
         }
 
@@ -352,11 +355,11 @@ public class VNSTransaction {
             return tokenEnName;
         }
 
-        public void setGasUsed(int gasUsed) {
+        public void setGasUsed(String gasUsed) {
             this.gasUsed = gasUsed;
         }
 
-        public int getGasUsed() {
+        public String getGasUsed() {
             return gasUsed;
         }
 
@@ -392,5 +395,10 @@ public class VNSTransaction {
             return beginIndex;
         }
 
+    }
+
+    public static void main(String[] args) {
+        BigDecimal decimal = new BigDecimal("1.0E19");
+        System.out.println(NumberMathUtil.weiToEth(decimal));
     }
 }
